@@ -58,14 +58,14 @@
 (defn draw []
   (background 255)
   (translate (/ (width) 2) (/ (height) 2) 0)
-  (rotate-y (* (frame-count) 0.03))
-  (rotate-x (* (frame-count) 0.04))
-  (let [line-args (for [t (range 0 180)]
+  (rotate-y (* (frame-count) 0.003))
+  (rotate-x (* (frame-count) 0.004))
+  (let [line-args (for [t (range 0 280)]
                     (let [s        (* t 18)
                           radian-s (radians s)
                           radian-t (radians t)
                           x (* radius  (cos radian-s) (sin radian-t))
-                          y (* radius  (sin radian-s) (sin radian-t))
+                          y (* radius  (tan radian-s) (sin radian-t))
                           z (* radius (cos radian-t))]
                       [x y z]))]
     (dorun

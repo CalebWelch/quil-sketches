@@ -59,7 +59,7 @@
         grey (mul-add noise-factor 120 150)
         alph (mul-add noise-factor 120 150)]
     (no-stroke)
-    (fill grey alph)
+    (fill 0 200 alph)
     (ellipse 0 0 edge-size (/ edge-size 2))
     (pop-matrix)))
 

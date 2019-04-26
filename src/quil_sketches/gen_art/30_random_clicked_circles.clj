@@ -34,7 +34,7 @@
 ;;   }
 ;; }
 
-(def num 10)
+(def num 50)
 
 (defn draw-circles []
   (dorun
@@ -42,7 +42,6 @@
      (let [x      (random (width))
            y      (random (height))
            radius (+ (random 100) 10)]
-       (no-stroke)
        (ellipse x y (* 2 radius) (* 2 radius))
        (stroke 0 150)
        (ellipse x y 10 10)))))

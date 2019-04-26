@@ -68,6 +68,6 @@
 (defsketch gen-art-23
   :title "Fluffy Clouds 2D Noise Grid"
   :setup setup
-  :size [300 300])
+  :size [800 800])
 
 (defn -main [& args])
