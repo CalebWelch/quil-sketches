@@ -4,15 +4,13 @@
     [quil.helpers.calc :refer [mul-add]]
     [quil.core :as q]))
 
-
-
 (defn draw-points [x y noise]
   (q/push-matrix)
   (q/no-stroke)
   (q/translate x y)
   (let [grey (mul-add noise 120 150)
         alpha (mul-add noise 00 150)]
-    (q/fill grey )
+    (q/fill grey)
     (q/ellipse 0 0 30 10)
     (q/pop-matrix)))
 
@@ -33,22 +31,27 @@
   (let [
         image1 (q/create-graphics (q/width) (q/height))
         image2 (q/create-graphics (q/width) (q/height))
+        artistTitle "A | S"
+        text-size (/ (q/width) 3)
         ]
 
     (q/with-graphics image2
                      (q/color-mode :hsb 1)
                      (q/fill 0 0 1)
-                     (q/background 0)
-                     (q/text-align :center :center)
-                     (q/text-size 100)
-                     (q/text "L Y S" (/ (q/width) 2) (/ (q/height) 2)))
+                     (q/stroke 0 0 1)
+                     (q/text-align :center :baseline)
+                     (q/text-size text-size)
+                     (q/text-font (q/create-font "Microsoft YaHei UI Light" 100))
+                     (q/text artistTitle (/ (q/width) 2) (/ (q/height) 2))
+                     (q/text-size (/ text-size 4))
+                     (q/text "H o m e c o m i n g" (/ (q/width) 2) (- (q/height) (/ (q/height) 4))))
     (q/image image2 0 0)
 
     (q/with-graphics image1
                      (let [start-str (q/state :stream)
                            [x-start y-start] (start-str)]
-                     (draw-all-points x-start y-start))
-                     ;(q/blend-mode :burn)
+                       (draw-all-points x-start y-start))
+                     (q/blend-mode :difference)
                      (q/mask-image image2)
                      )
     (q/image image1 0 0)
@@ -69,4 +72,4 @@
 (q/defsketch clouds
              :setup setup
              :draw draw
-             :size [300 300])
+             :size [1080 1080])

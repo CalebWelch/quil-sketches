@@ -59,12 +59,12 @@
         grey (mul-add noise-factor 120 150)
         alph (mul-add noise-factor 120 150)]
     (no-stroke)
-    (fill 0 200 alph)
+    (fill grey alph)
     (ellipse 0 0 edge-size (/ edge-size 2))
     (pop-matrix)))
 
 (defn draw-all-points [x-start y-start]
-  (let [step-size 5
+  (let [step-size 10
         x-idxs    (range-incl 0 (/ (width) step-size))
         y-idxs    (range-incl 0 (/ (height) step-size))]
     (doseq [x-idx x-idxs
@@ -85,7 +85,7 @@
 (defn setup []
   (smooth)
   (background 0)
-  (frame-rate 24)
+  (frame-rate 64)
 
   (let [x-starts (steps (random 10) 0.01)
         y-starts (steps (random 10) 0.01)
